@@ -5,6 +5,7 @@ import 'package:snacksprite/common_widget/round_icon_button.dart';
 import 'package:snacksprite/common_widget/round_textfield.dart';
 import 'package:snacksprite/views/login/reset_password.dart';
 import 'package:snacksprite/views/login/sign_up_view.dart';
+import 'package:snacksprite/views/onboarding_screen/on_boarding_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -73,7 +74,16 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 25,
                 ),
-                RoundBtn(title: 'Login', onPressed: () {}),
+                RoundBtn(
+                    title: 'Login',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const OnBoardingView(),
+                        ),
+                      );
+                    }),
                 const SizedBox(
                   height: 4,
                 ),
