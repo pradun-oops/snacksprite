@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snacksprite/common_widget/app_name.dart';
 import 'package:snacksprite/views/login/welcome_view.dart';
 
 class StartupView extends StatefulWidget {
@@ -60,29 +61,7 @@ class _StartupViewState extends State<StartupView> {
           ),
           const Padding(
             padding: EdgeInsets.only(top: 300.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Snack',
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.deepOrange,
-                      fontFamily: 'Metropolis',
-                      fontStyle: FontStyle.italic),
-                ),
-                Text(
-                  'Sprite',
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontFamily: 'Metropolis',
-                      fontStyle: FontStyle.italic),
-                ),
-              ],
-            ),
+            child: AppName(),
           ),
         ],
       ),
