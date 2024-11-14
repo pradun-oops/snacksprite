@@ -6,38 +6,56 @@ class RoundTextfield extends StatelessWidget {
   final String hintText;
   final TextInputType? keyboardType;
   final bool obsecured;
-  const RoundTextfield(
-      {super.key,
-      this.controller,
-      required this.hintText,
-      this.keyboardType,
-      this.obsecured = false});
+  final Color? bgColor;
+  final Widget? left;
+  const RoundTextfield({
+    super.key,
+    this.controller,
+    required this.hintText,
+    this.keyboardType,
+    this.obsecured = false,
+    this.bgColor,
+    this.left,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: TColor.textfield,
+        color: bgColor ?? TColor.textfield,
         borderRadius: BorderRadius.circular(25),
       ),
-      child: TextField(
-        keyboardType: keyboardType,
-        autocorrect: false,
-        controller: controller,
-        obscureText: obsecured,
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 20,
+      child: Row(
+        children: [
+          if (left != null)
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 10,
+              ),
+              child: left!,
+            ),
+          Expanded(
+            child: TextField(
+              keyboardType: keyboardType,
+              autocorrect: false,
+              controller: controller,
+              obscureText: obsecured,
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                hintText: hintText,
+                hintStyle: TextStyle(
+                  fontSize: 16,
+                  color: TColor.placeholder,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
           ),
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          hintText: hintText,
-          hintStyle: TextStyle(
-            fontSize: 16,
-            color: TColor.placeholder,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        ],
       ),
     );
   }
