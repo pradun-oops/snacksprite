@@ -1,47 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:snacksprite/common/color_extension.dart';
 import 'package:snacksprite/common_widget/tab_button.dart';
-import 'package:snacksprite/views/home/home_view.dart';
+import '../home/home_view.dart';
+import '../menu/menu_view.dart';
 
 class MainTabview extends StatefulWidget {
   const MainTabview({super.key});
 
   @override
-  State<MainTabview> createState() => _MainTabviewState();
+  State<MainTabview> createState() => _MainTabViewState();
 }
 
-class _MainTabviewState extends State<MainTabview> {
-  int selectTab = 2;
+class _MainTabViewState extends State<MainTabview> {
+  int selctTab = 2;
   PageStorageBucket storageBucket = PageStorageBucket();
   Widget selectPageView = const HomeView();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageStorage(bucket: storageBucket, child: selectPageView),
+      backgroundColor: const Color(0xfff5f5f5),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: SizedBox(
-        width: 65,
-        height: 65,
+        width: 60,
+        height: 60,
         child: FloatingActionButton(
           onPressed: () {
-            if (selectTab == 2) {
-              selectTab = 2;
+            if (selctTab != 2) {
+              selctTab = 2;
               selectPageView = const HomeView();
-            } else {}
+            }
             if (mounted) {
               setState(() {});
             }
           },
           shape: const CircleBorder(),
-          backgroundColor: selectTab == 2 ? TColor.primary : TColor.placeholder,
+          backgroundColor: selctTab == 2 ? TColor.primary : TColor.placeholder,
           child: Image.asset(
-            'assets/img/tab_home.png',
-            width: 40,
-            height: 40,
+            "assets/img/tab_home.png",
+            width: 30,
+            height: 30,
           ),
         ),
       ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
       bottomNavigationBar: BottomAppBar(
         surfaceTintColor: TColor.white,
         shadowColor: Colors.black,
@@ -57,28 +60,28 @@ class _MainTabviewState extends State<MainTabview> {
                   title: "Menu",
                   icon: "assets/img/tab_menu.png",
                   onTap: () {
-                    if (selectTab == 0) {
-                      selectTab = 0;
-                      selectPageView = const HomeView();
-                    } else {}
+                    if (selctTab != 0) {
+                      selctTab = 0;
+                      selectPageView = const MenuView();
+                    }
                     if (mounted) {
                       setState(() {});
                     }
                   },
-                  isSelected: selectTab == 0),
+                  isSelected: selctTab == 0),
               TabButton(
                   title: "Offer",
                   icon: "assets/img/tab_offer.png",
                   onTap: () {
-                    if (selectTab == 1) {
-                      selectTab = 1;
+                    if (selctTab != 1) {
+                      selctTab = 1;
                       selectPageView = const HomeView();
-                    } else {}
+                    }
                     if (mounted) {
                       setState(() {});
                     }
                   },
-                  isSelected: selectTab == 1),
+                  isSelected: selctTab == 1),
               const SizedBox(
                 width: 40,
                 height: 40,
@@ -87,28 +90,28 @@ class _MainTabviewState extends State<MainTabview> {
                   title: "Profile",
                   icon: "assets/img/tab_profile.png",
                   onTap: () {
-                    if (selectTab == 3) {
-                      selectTab = 3;
+                    if (selctTab != 3) {
+                      selctTab = 3;
                       selectPageView = const HomeView();
-                    } else {}
+                    }
                     if (mounted) {
                       setState(() {});
                     }
                   },
-                  isSelected: selectTab == 3),
+                  isSelected: selctTab == 3),
               TabButton(
                   title: "More",
                   icon: "assets/img/tab_more.png",
                   onTap: () {
-                    if (selectTab == 4) {
-                      selectTab = 4;
+                    if (selctTab != 4) {
+                      selctTab = 4;
                       selectPageView = const HomeView();
-                    } else {}
+                    }
                     if (mounted) {
                       setState(() {});
                     }
                   },
-                  isSelected: selectTab == 4),
+                  isSelected: selctTab == 4),
             ],
           ),
         ),
